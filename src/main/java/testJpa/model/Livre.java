@@ -1,8 +1,13 @@
-package model;
+package testJpa.model;
+
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +19,12 @@ public class Livre {
 	private String titre;
 	@Column(name = "Auteur", length = 50, nullable = false)
 	private String auteur;
+	@ManyToMany
+	@JoinTable(name = "compo", 
+	joinColumns = @JoinColumn(name="id_liv", referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn(name="id_emp", referencedColumnName = "id"))
+	
+	private Set<Emprunt> emprunts;
 
 	public String getAuteur() {
 		return auteur;
@@ -38,4 +49,13 @@ public class Livre {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+	public Set<Emprunt> getEmprunts() {
+		return emprunts;
+	}
+
+	public void setEmprunts(Set<Emprunt> emprunts) {
+		this.emprunts = emprunts;
+	}
+	
 }
