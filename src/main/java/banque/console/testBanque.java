@@ -17,7 +17,6 @@ import banque.model.Banque;
 import banque.model.Client;
 import banque.model.Compte;
 import banque.model.LivretA;
-import banque.model.Operation;
 import banque.model.Virement;
 
 public class testBanque {
